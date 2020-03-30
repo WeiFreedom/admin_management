@@ -9,6 +9,17 @@ const permissionList = {
     },
     {
       name: 'reports'
+    },
+    {
+      name: 'system',
+      children: [
+        {
+          name: 'role-setting'
+        },
+        {
+          name: 'user-setting'
+        }
+      ]
     }
   ]
 }

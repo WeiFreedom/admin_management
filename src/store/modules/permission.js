@@ -83,11 +83,11 @@ export default {
       /*  初始路由 */
       const initialRoutes = router.options.routes
 
+      /* 将路由表保存进去右侧导航栏 */
+      commit('SET_PERMISSION', [...initialRoutes, ...DynamicRoutes])
+
       /*  动态添加路由 */
       router.addRoutes(DynamicRoutes)
-
-      /* 完整的路由表 */
-      commit('SET_PERMISSION', [...initialRoutes, ...DynamicRoutes])
     }
   }
 }

@@ -12,7 +12,7 @@ Vue.config.productionTip = false
 Vue.use(ElementUI)
 
 router.beforeEach((to, from, next) => {
-  if (!store.state.user.userToken) { // 如果没有token
+  if (!store.state.user || !store.state.user.user || !store.state.user.user.token) { // 如果没有token
     if (
       to.matched.length > 0 &&
             !to.matched.some(record => record.meta.requiresAuth) // 验证路由是不是要求权限

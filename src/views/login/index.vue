@@ -95,13 +95,20 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['LOGIN_IN_HANDLE']),
+    ...mapActions({
+      LOGIN_IN_HANDLE: 'user/LOGIN_IN_HANDLE'
+    }),
     async handleLogin () {
       try {
         const data = await login()
         const token = data.token
-        // this.$store.commit('LOGIN_IN', token, '', '', '', '')
-        this.LOGIN_IN_HANDLE(token, '', '', '', '')
+        this.LOGIN_IN_HANDLE({
+          token: token,
+          userId: '',
+          userName: '',
+          deptId: '',
+          deptName: ''
+        })
         this.$router.replace('/')
       } catch (e) {
         console.log(e)

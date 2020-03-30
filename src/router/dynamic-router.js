@@ -30,6 +30,36 @@ const dynamicRoutes = [
       icon: 'el-icon-document',
       requiresAuth: true
     }
+  },
+  {
+    path: '/system',
+    name: 'system',
+    component: () => import('../views/system/index.vue'),
+    meta: {
+      caption: '系统设置',
+      icon: 'el-icon-setting',
+      requiresAuth: true
+    },
+    children: [
+      {
+        path: '/system/user-setting',
+        name: 'user-setting',
+        component: () => import('../views/system/user-setting.vue'),
+        meta: {
+          caption: '用户管理',
+          requiresAuth: true
+        }
+      },
+      {
+        path: '/system/role-setting',
+        name: 'role-setting',
+        component: () => import('../views/system/role-setting.vue'),
+        meta: {
+          caption: '权限管理',
+          requiresAuth: true
+        }
+      }
+    ]
   }
 ]
 

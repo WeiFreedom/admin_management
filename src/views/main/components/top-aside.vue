@@ -7,13 +7,13 @@
       </el-breadcrumb-item>
     </el-breadcrumb>
     <div class="user">
-      <el-dropdown>
+      <el-dropdown @command="handleCommand">
         <span class="el-dropdown-link">
           administrator
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item>个人信息</el-dropdown-item>
-          <el-dropdown-item divided>退出</el-dropdown-item>
+          <el-dropdown-item divided command="quit">退出</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
@@ -49,7 +49,7 @@
 </style>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   data () {
     return {
@@ -60,6 +60,17 @@ export default {
     ...mapState({
       sidebarMenu: state => state.permission.sidebarMenu
     })
+  },
+  methods: {
+    ...mapActions({
+      LOGIN_OUT_HANDLE: 'user/LOGIN_OUT_HANDLE'
+    }),
+    handleCommand (command) {
+      if (command === 'quit') {
+        this.LOGIN_OUT_HANDLE() // 清空登录信息
+        this.$router.push('/login') // 跳转到登录页
+      }
+    }
   }
 }
 </script>
