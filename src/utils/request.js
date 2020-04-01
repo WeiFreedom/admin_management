@@ -97,6 +97,7 @@ request.post = function (url, data, options) {
           })
           reject(response.message)
         }
+        // reject(response.message)
       })
       .catch(e => {
         console.log(e)
